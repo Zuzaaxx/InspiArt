@@ -1,0 +1,177 @@
+body {
+    margin: 0px;
+    background-image: url("../img/logo-bird.png");
+    background-repeat: no-repeat;
+    background-color: #fce6a5b8;
+    background-position: center;
+    background-size: auto 80vh;
+}
+
+.base-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0px;
+    padding:0px;
+    background: transparent linear-gradient(180deg, #ffffff 0%, #f5e9aa 100%) 0% 0% no-repeat padding-box;
+}
+
+nav {
+    width: 300px;
+    height: 100vh;
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    width:calc(100vw - 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    background-image: url("../img/logo-bird.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 80vh;
+}
+
+button {
+    border-radius: 100px;
+    background: #F28618;
+    width: 70%;
+    height: 4em;
+    border: none;
+    color: white;
+    margin: 3em;
+    line-height: 2.5em;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: small;
+}
+
+.logo-napis {
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 1em;
+    color: #F28618;
+    align-self: flex-start;
+}
+
+.menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0em;
+    width: 80%;
+    height: 80%;
+    
+}
+
+ul {
+    list-style-type: none;
+    color: white;
+    font: normal normal normal 14px/18px Segoe UI;
+    letter-spacing: 2px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+li {
+    text-align: left;
+    margin: 0;
+}
+
+.fa, .fas {
+    width: 2em;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button {
+    border-bottom: 1px solid #F28618;
+    margin-left: 1em;
+    text-align: left;
+    letter-spacing: 0.7px;
+    color: #F28618;
+    padding: 1em;
+    width: 80%;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    grid-gap: 2em;
+    overflow: auto;
+}
+
+.option {
+    background-color: #fffff5ea;
+    padding: 3em;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option>i {
+    margin-bottom: 0.2em;
+    font-size: 7em;
+
+    color:#F28618;
+}
+
+.decoration-top {
+    display: flex;
+    justify-content: flex-end;
+    width:calc(100vw - 300px);
+}
+
+.decoration-bottom {
+    display: flex;
+    justify-content: flex-start;
+    position: bottom;
+    width:calc(100vw - 400px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 60vh;
+
+    background-color: #FFFFFFE0;
+    border-radius: 30px;
+}
+
+input {
+    background-color: #77777750;
+    border: none;
+    border-radius: 19px;
+    padding: 1em;
+    margin: 1em;
+    width: 60%;
+    
+}
+
+.profile-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
