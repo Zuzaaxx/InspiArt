@@ -14,8 +14,7 @@ body {
 }
 
 .login-container {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding: 0em 3em;
 
     width: 40vw;
     height: 100vh;
@@ -24,7 +23,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     text-align: left;
-    background-color: #ffffff3a;
+    background-color: #ffffff;
     box-shadow: 6px 0px 6px #00000029;
 }
 
