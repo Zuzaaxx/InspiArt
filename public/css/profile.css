@@ -115,13 +115,13 @@ button {
 .base-container {
     width: calc(100vw - 300px);
     height: 100vh;
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     position: relative;
+    overflow: hidden;
     z-index: 1;
 }
 
@@ -135,8 +135,8 @@ button {
 
     background-image: url("../img/logo-bird.png");
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 100vh;
+    background-position: right bottom;
+    background-size: auto 50vh;
 
     opacity: 0.5;
 
@@ -144,61 +144,53 @@ button {
 }
 
 .section {
-    height:70vh;
-    width: 50%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-
-    grid-gap: 2em;
-    /*overflow: auto;*/
-    place-items: center;
-    justify-items: center;
-    align-items: center;
-
     position: absolute;
-}
-
-.option {
-    width: 60%;
-    height: 9em;
-
-    background-color: #fffff5ea;
-    padding: 3em;
-    border-radius: 30px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 60%;
+    height: 70vh;
 }
 
-.option>i {
-    margin-bottom: 0.2em;
-    font-size: 6em;
-
-    color:#000000;
-}
-.option>img {
-    margin-bottom: 0.2em;
-    height: 6em;
-
-    color:#000000;
+.profile-picture {
+    width: 12em;
+    margin: 2em;
+    margin-top: 3em;
 }
 
-.option-label {
-    font-size: 1.5em;
-    text-align: center;
+form {
+    height:50vh;
+    width: 80%;
+}
+
+p {
+    margin: 0;
+    margin-top: 1em;
+}
+
+input {
+    background-color: #ffffffd0;
+    border: none;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 0em;
+    width: 90%;
+}
+
+.save {
+    max-width: 50%;
+    height: 4em;
 }
 
 .decoration-top {
-    display: flex;
     margin-bottom: auto;
     width:calc(100vw - 300px);
+    height: 35%;
 }
 
 .decoration-bottom {
-    display: flex;
     margin-top: auto;
     width:calc(100vw - 300px);
-    height: 25%;
+    height: 15%;
 }
