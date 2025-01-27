@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/style1.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style1.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
     <script src="https://kit.fontawesome.com/5f58e28f90.js" crossorigin="anonymous"></script>
     <title>Start</title>
@@ -43,19 +43,19 @@
             <button class="log-out">Log out</button>
         </nav>
         <div class="base-container">
-            <img class="decoration-top" alt="" src="../img/Vector 3.svg">
+            <img class="decoration-top" alt="" src="public/img/Vector 3.svg">
             
             <div class="section">
                 <div class="option">
-                    <img src="../img/description.svg">
+                    <img src="public/img/description.svg">
                     <p class="option-label">description</p>
                 </div>
                 <div class="option">
-                    <img src="../img/simple-drawing.svg">
+                    <img src="public/img/simple-drawing.svg">
                     <p class="option-label">simple drawing</p>
                 </div>
                 <div class="option">
-                    <img src="../img/scribble-art.svg">
+                    <img src="public/img/scribble-art.svg">
                     <p class="option-label">scribble art</p>
                 </div>
                 <div class="option">
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-    		<img class="decoration-bottom" alt="" src="../img/Vector 4.svg">      
+    		<img class="decoration-bottom" alt="" src="public/img/Vector 4.svg">
         </div>
     </div>
 </body>
