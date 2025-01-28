@@ -21,7 +21,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-button">
+                        <a href="#" class="menu-button" style="color: #d46900">
                             <i class="fa-solid fa-heart"></i>
                             <p class="menu-button-text">Favourite ideas</p>
                         </a>

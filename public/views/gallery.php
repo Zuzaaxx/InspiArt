@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/profile.css">
+    <link rel="stylesheet" type="text/css" href="public/css/gallery.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
     <script src="https://kit.fontawesome.com/5f58e28f90.js" crossorigin="anonymous"></script>
-    <title>My profile</title>
+    <title>Favourites</title>
 </head>
 <body>
     <div class="container">
@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-button">
+                        <a href="#" class="menu-button" style="color: #d46900">
                             <i class="fa-solid fa-image"></i>
                             <p class="menu-button-text">My gallery</p>
                         </a>
@@ -43,23 +43,28 @@
             <button class="log-out">Log out</button>
         </nav>
         <div class="base-container">
-            <img class="decoration-top" alt="" src="../img/Vector 5.svg">
-            <div class="section">
-                <img class="profile-picture" src="../img/profile-picture.svg" alt="ludź">
-                   <form>
-                    <p class="input-label">Name:</p>
-                    <input name="name" type="text" placeholder="name">
-                        <p class="input-label">E-mail:</p>
-                    <input name="e-mail" type="text" placeholder="email@gmail.com">
-                    <p class="input-label">Username:</p>
-                    <input name="username" type="text" placeholder="username">
-                    <p class="input-label">Password:</p>
-                    <input name="password" type="password" placeholder="password">
-                </form>
-                <button class="save">Save changes</button>
-            </div>
+            <img class="decoration-top" alt="" src="public/img/Vector 3.svg">
             
-    		<img class="decoration-bottom" alt="" src="../img/Vector 4.svg">      
+            <div class="top-leyer">
+                <div class="search-bar">
+                    <input placeholder="search idea">
+                </div>
+                
+                <div class="section">
+                    <div class="idea" id="idea-1">
+                        <img src="public/uploads/<?= $idea->getImage() ?>">
+                        <div>
+                            <h3><?= $idea->getTitle() ?></h3>
+                            <p><?= $idea->getDescription() ?>t</p>
+                            <div class="social-section">
+                                <i class="fas fa-heart"></i>
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    		<img class="decoration-bottom" alt="" src="public/img/Vector 4.svg">
         </div>
     </div>
 </body>

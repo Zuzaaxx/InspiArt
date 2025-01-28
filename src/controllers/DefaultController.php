@@ -18,4 +18,14 @@ class DefaultController extends AppController
     {
         $this->render('favourite-ideas');
     }
+
+    public function gallery()
+    {
+        $this->render('gallery');
+    }
+    public function profile()
+    {
+        $this->render('profile');
+    }
+
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="public/css/profile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
     <script src="https://kit.fontawesome.com/5f58e28f90.js" crossorigin="anonymous"></script>
-    <title>Start</title>
+    <title>My profile</title>
 </head>
 <body>
     <div class="container">
@@ -15,7 +15,7 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a href="#" class="menu-button" style="color: #d46900">
+                        <a href="#" class="menu-button">
                             <i class="fa-solid fa-house"></i>
                             <p class="menu-button-text">Start</p>
                         </a>
@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-button">
+                        <a href="#" class="menu-button" style="color: #d46900">
                             <i class="fa-solid fa-user"></i>
                             <p class="menu-button-text">My profile</p>
                         </a>
@@ -43,27 +43,22 @@
             <button class="log-out">Log out</button>
         </nav>
         <div class="base-container">
-            <img class="decoration-top" alt="" src="public/img/Vector 3.svg">
-            
+            <img class="decoration-top" alt="" src="public/img/Vector 5.svg">
             <div class="section">
-                <div class="option">
-                    <img src="public/img/description.svg">
-                    <p class="option-label">description</p>
-                </div>
-                <div class="option">
-                    <img src="public/img/simple-drawing.svg">
-                    <p class="option-label">simple drawing</p>
-                </div>
-                <div class="option">
-                    <img src="public/img/scribble-art.svg">
-                    <p class="option-label">scribble art</p>
-                </div>
-                <div class="option">
-                    <i class="fa-solid fa-dice"></i>
-                    <p class="option-label">random</p>
-                </div>
+                <img class="profile-picture" src="public/img/profile-picture.svg" alt="ludź">
+                   <form>
+                    <p class="input-label">Name:</p>
+                    <input name="name" type="text" placeholder="name">
+                        <p class="input-label">E-mail:</p>
+                    <input name="e-mail" type="text" placeholder="email@gmail.com">
+                    <p class="input-label">Username:</p>
+                    <input name="username" type="text" placeholder="username">
+                    <p class="input-label">Password:</p>
+                    <input name="password" type="password" placeholder="password">
+                </form>
+                <button class="save">Save changes</button>
             </div>
-
+            
     		<img class="decoration-bottom" alt="" src="public/img/Vector 4.svg">
         </div>
     </div>

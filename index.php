@@ -7,6 +7,10 @@ $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('','DefaultController');
 Routing::get('start','DefaultController');
-Routing::post('login','SecurityController');
 Routing::get('favourites','DefaultController');
+Routing::get('gallery','DefaultController');
+Routing::get('profile','DefaultController');
+Routing::post('login','SecurityController');
+Routing::post('addIdea','IdeaController');
+
 Routing::run($path);
