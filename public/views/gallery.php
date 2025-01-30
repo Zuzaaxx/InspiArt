@@ -55,7 +55,7 @@
                         <img src="public/uploads/<?= $idea->getImage() ?>">
                         <div>
                             <h3><?= $idea->getTitle() ?></h3>
-                            <p><?= $idea->getDescription() ?>t</p>
+                            <p><?= $idea->getDescription() ?></p>
                             <div class="social-section">
                                 <i class="fas fa-heart"></i>
                                 <i class="fa-solid fa-image"></i>

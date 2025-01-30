@@ -213,7 +213,7 @@ button {
 
     background-color: #fffff5ea;
     padding: 1em;
-    border-radius: 30px;
+    border-radius: 20px;
 
     display: flex;
     flex-direction: column;
@@ -222,10 +222,12 @@ button {
 
 .idea>img {
     width: 100%;
+    object-fit: cover;
+    height: 5em;
+    overflow: hidden;
     margin-bottom: 0.2em;
     font-size: 6em;
-
-    color:#000000;
+    color: #000000;
 }
 
 .decoration-top {

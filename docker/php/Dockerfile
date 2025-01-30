@@ -1,5 +1,9 @@
 FROM php:7.4.3-fpm-alpine3.11
 
-COPY . /app
+RUN apk --no-cache add postgresql-dev && docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql
 
-VOLUME [ "/app" ]
+WORKDIR /app
+
+COPY . /app
+VOLUME ["/app"]
