@@ -1,161 +1,160 @@
+CREATE SEQUENCE users_details_id_seq as integer;
+ALTER SEQUENCE users_details_id_seq OWNER TO admin;
+
+CREATE SEQUENCE users_id_seq as integer;
+ALTER SEQUENCE users_id_seq OWNER TO admin;
+
+CREATE SEQUENCE categories_id_seq as integer;
+ALTER SEQUENCE categories_id_seq OWNER TO admin;
+
+CREATE SEQUENCE idea_id_seq as integer;
+ALTER SEQUENCE idea_id_seq OWNER TO admin;
+
 --------------------------------------------------------
---  DDL for Table GALLERY
+--  DDL for Table USERS_DETAILS (1:1 with USERS)
 --------------------------------------------------------
-
-DROP TABLE IF EXISTS "GALLERY" CASCADE;
-DROP SEQUENCE IF EXISTS "GALLERY_ID_SEQ";
-
-CREATE SEQUENCE "GALLERY_ID_SEQ"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-CREATE TABLE "GALLERY" (
-    "ID" INTEGER DEFAULT nextval('"GALLERY_ID_SEQ"') PRIMARY KEY, 
-    "USER_ID" INTEGER REFERENCES "USERS"("USER_ID") ON DELETE CASCADE,
-    "IDEA_ID" INTEGER REFERENCES "IDEAS"("ID") ON DELETE CASCADE,
-    "TITLE" VARCHAR(100), 
-    "DESCRIPTION" VARCHAR(255), 
-    "IMAGE_PATH" VARCHAR(255), 
-    "DATE_ADDED" VARCHAR(20)
+CREATE TABLE users_details (
+                               id INTEGER DEFAULT nextval('users_details_id_seq') PRIMARY KEY,
+                               name VARCHAR(100) NOT NULL,
+                               email VARCHAR(100) NOT NULL UNIQUE,
+                               profile_picture VARCHAR(255)
 );
 
-ALTER SEQUENCE "GALLERY_ID_SEQ" OWNED BY "GALLERY"."ID";
+alter table users_details owner to admin;
+
+ALTER SEQUENCE users_details_id_seq OWNED BY users_details.id;
 
 --------------------------------------------------------
---  DDL for Table CATEGORIES
+--  DDL for Table USERS (1:1 with USERS_DETAILS)
 --------------------------------------------------------
-
-DROP TABLE IF EXISTS "CATEGORIES" CASCADE;
-DROP SEQUENCE IF EXISTS "CATEGORIES_ID_SEQ";
-
-CREATE SEQUENCE "CATEGORIES_ID_SEQ"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-CREATE TABLE "CATEGORIES" (
-    "ID" INTEGER DEFAULT nextval('"CATEGORIES_ID_SEQ"') PRIMARY KEY, 
-    "NAME" VARCHAR(50)
+CREATE TABLE users (
+                       id INTEGER DEFAULT nextval('users_id_seq') PRIMARY KEY,
+                       username VARCHAR(50) NOT NULL UNIQUE,
+                       password VARCHAR(255) NOT NULL,
+                       enabled BOOLEAN DEFAULT TRUE,
+                       salt VARCHAR(255),
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       user_details_id INTEGER UNIQUE, -- Relacja 1:1
+                       FOREIGN KEY (user_details_id) REFERENCES users_details(id)
+                           ON DELETE CASCADE
+                           ON UPDATE CASCADE
 );
 
-ALTER SEQUENCE "CATEGORIES_ID_SEQ" OWNED BY "CATEGORIES"."ID";
+alter table users owner to admin;
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 --------------------------------------------------------
---  DDL for Table IDEAS
+--  DDL for Table CATEGORIES (1:N with IDEA)
 --------------------------------------------------------
-
-DROP TABLE IF EXISTS "IDEAS" CASCADE;
-DROP SEQUENCE IF EXISTS "IDEAS_ID_SEQ";
-
-CREATE SEQUENCE "IDEAS_ID_SEQ"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-CREATE TABLE "IDEAS" (
-    "ID" INTEGER DEFAULT nextval('"IDEAS_ID_SEQ"') PRIMARY KEY, 
-    "NAME_PATH" VARCHAR(255), 
-    "ALT_TEXT" VARCHAR(255), 
-    "CATEGORY_ID" INTEGER REFERENCES "CATEGORIES"("ID") ON DELETE SET NULL
+CREATE TABLE categories (
+                            id INTEGER DEFAULT nextval('categories_id_seq') PRIMARY KEY,
+                            category_name VARCHAR(50) NOT NULL UNIQUE
 );
 
-ALTER SEQUENCE "IDEAS_ID_SEQ" OWNED BY "IDEAS"."ID";
+alter table categories owner to admin;
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 --------------------------------------------------------
---  DDL for Table FAVORITES
+--  DDL for Table IDEA (1:N with CATEGORIES, 1:N with USERS_GALLERY)
 --------------------------------------------------------
-
-DROP TABLE IF EXISTS "FAVORITES" CASCADE;
-DROP SEQUENCE IF EXISTS "FAVORITES_ID_SEQ";
-
-CREATE SEQUENCE "FAVORITES_ID_SEQ"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-CREATE TABLE "FAVORITES" (
-    "ID" INTEGER DEFAULT nextval('"FAVORITES_ID_SEQ"') PRIMARY KEY, 
-    "USER_ID" INTEGER REFERENCES "USERS"("USER_ID") ON DELETE CASCADE,
-    "IDEA_ID" INTEGER REFERENCES "IDEAS"("ID") ON DELETE CASCADE
+CREATE TABLE idea (
+                      id INTEGER DEFAULT nextval('idea_id_seq') PRIMARY KEY,
+                      name_path VARCHAR(255) NOT NULL,
+                      alternative_text VARCHAR(255),
+                      category_id INTEGER NOT NULL, -- Relacja 1:N z kategoriami
+                      FOREIGN KEY (category_id) REFERENCES categories(id)
+                          ON DELETE SET NULL
+                          ON UPDATE CASCADE
 );
 
-ALTER SEQUENCE "FAVORITES_ID_SEQ" OWNED BY "FAVORITES"."ID";
+alter table idea owner to admin;
+
+ALTER SEQUENCE idea_id_seq OWNED BY idea.id;
 
 --------------------------------------------------------
---  DDL for Table USERS
+--  DDL for Table USERS_GALLERY (1:N with USERS, 1:N with IDEA)
 --------------------------------------------------------
-
-DROP TABLE IF EXISTS "USERS" CASCADE;
-DROP SEQUENCE IF EXISTS "USERS_ID_SEQ";
-
-CREATE SEQUENCE "USERS_ID_SEQ"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-CREATE TABLE "USERS" (
-    "USER_ID" INTEGER DEFAULT nextval('"USERS_ID_SEQ"') PRIMARY KEY, 
-    "USERNAME" VARCHAR(50), 
-    "FIRST_NAME" VARCHAR(50), 
-    "EMAIL" VARCHAR(100), 
-    "PASSWORD_HASH" VARCHAR(255), 
-    "JOIN_DATE" TIMESTAMP, 
-    "PROFILE_PICTURE" VARCHAR(255)
+CREATE TABLE users_gallery (
+                               user_id INTEGER NOT NULL, -- Relacja 1:N z users
+                               idea_id INTEGER NOT NULL, -- Relacja 1:N z idea
+                               title VARCHAR(100),
+                               description VARCHAR(255),
+                               path VARCHAR(255),
+                               date VARCHAR(20),
+                               PRIMARY KEY (user_id, idea_id), -- Unikalność wpisów dla użytkownika i pomysłu
+                               FOREIGN KEY (user_id) REFERENCES users(id)
+                                   ON DELETE CASCADE
+                                   ON UPDATE CASCADE,
+                               FOREIGN KEY (idea_id) REFERENCES idea(id)
+                                   ON DELETE CASCADE
+                                   ON UPDATE CASCADE
 );
 
-ALTER SEQUENCE "USERS_ID_SEQ" OWNED BY "USERS"."USER_ID";
+alter table users_gallery owner to admin;
 
 --------------------------------------------------------
---  Insert Data into GALLERY
+--  DDL for Table USERS_FAVOURITES (1:N with USERS, 1:N with IDEA)
+--------------------------------------------------------
+CREATE TABLE users_favourites (
+                                  user_id INTEGER NOT NULL, -- Relacja 1:N z users
+                                  idea_id INTEGER NOT NULL, -- Relacja 1:N z idea
+                                  PRIMARY KEY (user_id, idea_id), -- Unikalność ulubionych wpisów
+                                  FOREIGN KEY (user_id) REFERENCES users(id)
+                                      ON DELETE CASCADE
+                                      ON UPDATE CASCADE,
+                                  FOREIGN KEY (idea_id) REFERENCES idea(id)
+                                      ON DELETE CASCADE
+                                      ON UPDATE CASCADE
+);
+
+alter table users_favourites owner to admin;
+
+--------------------------------------------------------
+--  Insert Sample Data
 --------------------------------------------------------
 
-INSERT INTO "GALLERY" ("USER_ID", "IDEA_ID", "TITLE", "DESCRIPTION", "IMAGE_PATH", "DATE_ADDED") 
-VALUES (1, 3, 'sunny_unicorn', 'colored pencils', 'public/uploads/unicorn', NULL);
+-- USERS_DETAILS
+INSERT INTO users_details (name, email, profile_picture)
+VALUES
+    ('Zuzanna', 'zuzi@pk.edu.pl', NULL),
+    ('Admin', 'admin@pk.edu.pl', NULL);
 
-SELECT setval('"GALLERY_ID_SEQ"', (SELECT MAX("ID") FROM "GALLERY"), true);
+-- USERS
+INSERT INTO users (username, password, enabled, salt, created_at, user_details_id)
+VALUES
+    ('zuzi', 'hashed_password_1', TRUE, 'random_salt', '2025-01-30 16:41:12', 1),
+    ('admin', 'hashed_password_2', TRUE, 'random_salt', '2025-01-29 13:24:10', 2);
 
---------------------------------------------------------
---  Insert Data into CATEGORIES
---------------------------------------------------------
+-- CATEGORIES
+INSERT INTO categories (category_name) VALUES
+                                           ('description'),
+                                           ('simple_drawing'),
+                                           ('scribble_art');
 
-INSERT INTO "CATEGORIES" ("NAME") VALUES ('description'), ('simple_drawing'), ('scribble_art');
-
-SELECT setval('"CATEGORIES_ID_SEQ"', (SELECT MAX("ID") FROM "CATEGORIES"), true);
-
---------------------------------------------------------
---  Insert Data into IDEAS
---------------------------------------------------------
-
-INSERT INTO "IDEAS" ("NAME_PATH", "ALT_TEXT", "CATEGORY_ID") 
-VALUES 
+-- IDEA
+INSERT INTO idea (name_path, alternative_text, category_id)
+VALUES
+    ('jellyfish', 'meduza', 1),
+    ('horse', 'konik', 1),
+    ('tree', 'drzewo', 1),
     ('public/img/ideas/simple_drawing_1', 'house', 2),
     ('public/img/ideas/simple_drawing_2', 'fish', 2),
     ('public/img/ideas/simple_drawing_3', 'unicorn', 2),
-    ('public/img/ideas/scribble_art_1', NULL, 3),
-    ('public/img/ideas/scribble_art_2', NULL, 3),
-    ('public/img/ideas/scribble_art_3', NULL, 3),
-    ('tree', 'tree', 1),
-    ('jellyfish', 'jellyfish', 1),
-    ('pony', 'pony', 1);
+    ('public/img/ideas/scribble_art_1', null, 3),
+    ('public/img/ideas/scribble_art_2', null, 3),
+    ('public/img/ideas/scribble_art_3', null, 3);
 
-SELECT setval('"IDEAS_ID_SEQ"', (SELECT MAX("ID") FROM "IDEAS"), true);
+-- USERS_GALLERY
+INSERT INTO users_gallery (user_id, idea_id, title, description, path, date)
+VALUES (1, 6, 'sunny_unicorn', 'colored pencils', 'public/uploads/unicorn', '2025-01-31 19:21:00');
 
---------------------------------------------------------
---  Insert Data into USERS
---------------------------------------------------------
+-- USERS_FAVOURITES
+INSERT INTO users_favourites (user_id, idea_id)
+VALUES (1, 1);
 
-INSERT INTO "USERS" ("USERNAME", "FIRST_NAME", "EMAIL", "PASSWORD_HASH", "JOIN_DATE", "PROFILE_PICTURE") 
-VALUES ('zuzi', 'Zuzanna', 'zuzi@pk.edu.pl', 'hashed_password_1', '2025-01-30 16:41:12', NULL);
-
-SELECT setval('"USERS_ID_SEQ"', (SELECT MAX("USER_ID") FROM "USERS"), true);
+SELECT setval('users_details_id_seq', (SELECT MAX(id) FROM users_details), true);
+SELECT setval('users_id_seq', (SELECT MAX(id) FROM users), true);
+SELECT setval('categories_id_seq', (SELECT MAX(id) FROM categories), true);
+SELECT setval('idea_id_seq', (SELECT MAX(id) FROM idea), true);
