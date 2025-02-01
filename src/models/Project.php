@@ -1,16 +1,16 @@
 <?php
 
-class Idea
+class Project
 {
     private $title;
     private $description;
-    private $image;
+    private $path;
 
-    public function __construct($title, $description, $image)
+    public function __construct($title, $description, $path)
     {
         $this->title = $title;
         $this->description = $description;
-        $this->image = $image;
+        $this->path = $path;
     }
 
     public function getTitle() : string
@@ -35,12 +35,12 @@ class Idea
 
     public function getImage() : string
     {
-        return $this->image;
+        return $this->path;
     }
 
-    public function setImage($image)
+    public function setImage($path)
     {
-        $this->image = $image;
+        $this->path = $path;
     }
 
 

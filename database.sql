@@ -124,8 +124,8 @@ VALUES
 -- USERS
 INSERT INTO users (username, password, enabled, salt, created_at, user_details_id)
 VALUES
-    ('zuzi', 'hashed_password_1', TRUE, 'random_salt', '2025-01-30 16:41:12', 1),
-    ('admin', 'hashed_password_2', TRUE, 'random_salt', '2025-01-29 13:24:10', 2);
+    ('zuzi', 'hashed_password_1', false, 'random_salt', '2025-01-30 16:41:12', 1),
+    ('admin', 'hashed_password_2', false, 'random_salt', '2025-01-29 13:24:10', 2);
 
 -- CATEGORIES
 INSERT INTO categories (category_name) VALUES

@@ -6,10 +6,16 @@ require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController
 {
+    private $userRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userRepository = new UserRepository();
+    }
+
     public function login()
     {
-        $userRepository = new UserRepository();
-
         if(!$this->isPost()) {
             return $this->render('login');
         }
@@ -17,7 +23,7 @@ class SecurityController extends AppController
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $user = $userRepository->getUserByUsername($username);
+        $user = $this->userRepository->getUserByUsername($username);
 
         if (!$user) {
             return $this->render('login', ['messages' => ['wrong username']]);
@@ -36,4 +42,28 @@ class SecurityController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/start");
     }
+
+public function register()
+{
+    if (!$this->isPost()) {
+        return $this->render('register');
+    }
+
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $confirmedPassword = $_POST['confirmedPassword'];
+    $email = $_POST['email'];
+
+    if ($password !== $confirmedPassword) {
+        return $this->render('register', ['messages' => ['Please provide proper password']]);
+    }
+
+    //TODO try to use better hash function
+    $user = new User($username, md5($password), $name, $email);
+
+    $this->userRepository->addUser($user);
+
+    return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+}
 }
