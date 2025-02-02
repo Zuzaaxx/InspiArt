@@ -61,17 +61,13 @@ mobile version:
    ```sh
    git clone https://github.com/Zuzaaxx/InspiArt.git
    ```
-2. **Przejście do katalogu projektu**  
-   ```sh
-   cd InspiArt
-   ```
-3. **Uruchomienie aplikacji**  
+2. **Uruchomienie aplikacji**  
    - Upewnić się, że **Docker** jest uruchomiony
    - Wykonać polecenie:  
      ```sh
      docker-compose up --build
      ```
-4. **Otworzenie aplikacji w przeglądarce**  
+3. **Otworzenie aplikacji w przeglądarce**  
    - Przejdź do `http://localhost:8080`
 
 Po uruchomieniu można się zalogować przykładowymi danymi:
