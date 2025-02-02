@@ -15,47 +15,50 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a href="#" class="menu-button">
+                        <a href="start" class="menu-button">
                             <i class="fa-solid fa-house"></i>
                             <p class="menu-button-text">Start</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-button" style="color: #d46900">
+                        <a href="favourites" class="menu-button" style="color: #d46900">
                             <i class="fa-solid fa-heart"></i>
                             <p class="menu-button-text">Favourite ideas</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-button">
+                        <a href="gallery" class="menu-button">
                             <i class="fa-solid fa-image"></i>
                             <p class="menu-button-text">My gallery</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-button">
+                        <a href="profile" class="menu-button">
                             <i class="fa-solid fa-user"></i>
                             <p class="menu-button-text">My profile</p>
                         </a>
                     </li>
                 </ul>
             </div>
-            <button class="log-out">Log out</button>
+            <div style="color: red;">
+                You're in the demo version, this functions may not be ready to use.
+            </div>
+            <button class="log-out" onclick="window.location.href='login'">Log out</button>
         </nav>
         <div class="base-container">
             <img class="decoration-top" alt="" src="public/img/Vector 3.svg">
             
             <div class="top-leyer">
-                <div class="search-bar">
+                <div class="search-bar" style="visibility: hidden">
                     <input placeholder="search idea">
                 </div>
                 
                 <div class="section">
                     <div class="idea" id="idea-1">
-                        <img src="public/img/logo-bird.png">
+                        <img src="public/img/ideas/simple_drawing_1.jpg">
                         <div>
-                            <h3>Pomysł 1</h3>
-                            <p>Taki tam ptaszek ze scribble art</p>
+                            <h3>Idea</h3>
+                            <p>This might be your favourite idea</p>
                             <div class="social-section">
                                 <i class="fas fa-heart"></i>
                                 <i class="fa-solid fa-image"></i>
@@ -65,8 +68,8 @@
                     <div class="idea" id="idea-2">
                         <img src="public/img/logo-bird.png">
                         <div>
-                            <h3>Pomysł 2</h3>
-                            <p>Kurczę to chyba ten sam ptak</p>
+                            <h3>Might</h3>
+                            <p>because it doesn't work yet</p>
                             <div class="social-section">
                                 <i class="fas fa-heart"></i>
                                 <i class="fa-solid fa-image"></i>                        
@@ -74,10 +77,10 @@
                         </div>
                     </div>
                     <div class="idea" id="idea-3">
-                        <img src="public/img/logo-bird.png">
+                        <img src="public/img/ideas/simple_drawing_3.jpg">
                         <div>
-                            <h3>Pomysł 3</h3>
-                            <p>Na razie tak, ale to na pewno nie kurczę</p>
+                            <h3>Stay tuned</h3>
+                            <p>for the next update</p>
                             <div class="social-section">
                                 <i class="fas fa-heart"></i>
                                 <i class="fa-solid fa-image"></i>                        
@@ -85,10 +88,10 @@
                         </div>
                     </div>
                     <div class="idea" id="idea-4">
-                        <img src="public/img/logo-bird.png">
+                        <img src="public/img/ideas/scribble_art_1.jpeg">
                         <div>
-                            <h3>Pomysł 4</h3>
-                            <p>No tak bardziej przypomina zimorodka</p>
+                            <h3>Really</h3>
+                            <p>we're trying our best</p>
                             <div class="social-section">
                                 <i class="fas fa-heart"></i>
                                 <i class="fa-solid fa-image"></i>
@@ -96,10 +99,10 @@
                         </div>
                     </div>
                     <div class="idea" id="idea-5">
-                        <img src="public/img/logo-bird.png">
+                        <img src="public/img/ideas/scribble_art_2.jpeg">
                         <div>
-                            <h3>Pomysł 5</h3>
-                            <p>Koniec nocnych wywodów o 01:33 xddd</p>
+                            <h3>And really</h3>
+                            <p>want to update this project in the future</p>
                             <div class="social-section">
                                 <i class="fas fa-heart"></i>
                                 <i class="fa-solid fa-image"></i>

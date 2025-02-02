@@ -16,7 +16,7 @@ class SecurityController extends AppController
 
     public function login()
     {
-        if(!$this->isPost()) {
+        if (!$this->isPost()) {
             return $this->render('login');
         }
 
@@ -29,11 +29,8 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['wrong username']]);
         }
 
-        if($user->getUsername() !== $username) {
-            return $this->render('login', ['messages' => ['wrong username']]);
-        }
-
-        if($user->getPassword() !== $password) {
+        // Use password_verify for secure password verification
+        if (!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['wrong password']]);
         }
 
@@ -57,11 +54,12 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
 
-        //TODO try to use better hash function
-        $user = new User($username, md5($password), $name, $email);
+        // Use password_hash for secure password hashing
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $user = new User($username, $hashedPassword, $name, $email);
 
         $this->userRepository->addUser($user);
 
-        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+        return $this->render('login', ['messages' => ['You\'ve been successfully registered!']]);
     }
 }

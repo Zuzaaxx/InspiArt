@@ -124,8 +124,8 @@ VALUES
 -- USERS
 INSERT INTO users (username, password, enabled, salt, created_at, user_details_id)
 VALUES
-    ('zuzi', 'hashed_password_1', false, 'random_salt', '2025-01-30 16:41:12', 1),
-    ('admin', 'hashed_password_2', false, 'random_salt', '2025-01-29 13:24:10', 2);
+    ('zuzi', '$2y$10$JQ00WG5DJjG9v43Rj3MCp.rbWXN.HQD2.tnhy7ijrjZOfWLj0y9YG', false, 'random_salt', '2025-01-30 16:41:12', 1),
+    ('admin', '$2y$10$JQ00WG5DJjG9v43Rj3MCp.rbWXN.HQD2.tnhy7ijrjZOfWLj0y9YG', false, 'random_salt', '2025-01-29 13:24:10', 2);
 
 -- CATEGORIES
 INSERT INTO categories (category_name) VALUES
@@ -148,7 +148,9 @@ VALUES
 
 -- USERS_GALLERY
 INSERT INTO users_gallery (user_id, idea_id, title, description, path, date)
-VALUES (1, 6, 'sunny unicorn', 'colored pencils', 'public/uploads/unicorn', '2025-01-31 19:21:00');
+VALUES (1, 6, 'sunny unicorn', 'colored pencils', 'unicorn.png', '2025-01-31 19:21:00');
+VALUES (1, 6, 'tree', 'sth with pastels', 'tree', '2025-01-31 19:21:00');
+
 
 -- USERS_FAVOURITES
 INSERT INTO users_favourites (user_id, idea_id)

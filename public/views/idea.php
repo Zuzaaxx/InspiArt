@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="public/css/gallery.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
     <script src="https://kit.fontawesome.com/5f58e28f90.js" crossorigin="anonymous"></script>
-    <title>Start</title>
+    <title>Draw me!</title>
 </head>
 <body>
     <div class="container">
@@ -40,36 +40,41 @@
                     </li>
                 </ul>
             </div>
-            <div style="color: red;">
-                You're in the demo version, this functions may not be ready to use.
-            </div>
-
             <button class="log-out" onclick="window.location.href='login'">Log out</button>
         </nav>
         <div class="base-container">
             <img class="decoration-top" alt="" src="public/img/Vector 3.svg">
             
-            <div class="section">
-                <div class="option">
-                    <img src="public/img/description.svg">
-                    <p class="option-label">description</p>
+            <div class="top-leyer">
+                <div class="search-bar" style="visibility: hidden">
+                    <input placeholder="search idea">
                 </div>
-                <div class="option">
-                    <img src="public/img/simple-drawing.svg">
-                    <p class="option-label">simple drawing</p>
-                </div>
-                <div class="option">
-                    <img src="public/img/scribble-art.svg">
-                    <p class="option-label">scribble art</p>
-                </div>
-                <div class="option">
-                    <i class="fa-solid fa-dice"></i>
-                    <p class="option-label">random</p>
+                
+                <div class="section">
+                    <div class="idea" id="idea_id">
+                        <img src="public/uploads/<?= $project->getImage(); ?>">
+                        <div class="idea-text">
+                            <h3><?= $project->getTitle(); ?></h3>
+                            <p><?= $project->getDescription(); ?></p>
+                            <div class="social-section">
+                                <i class="fas fa-heart"></i>
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
     		<img class="decoration-bottom" alt="" src="public/img/Vector 4.svg">
         </div>
     </div>
+
+
+    <template id="idea-view-template">
+        <div class="idea" id="">
+            <img src="">
+            <h3>title</h3>
+        </div>
+    </template>
 </body>
 </html>
