@@ -3,7 +3,8 @@
     <link rel="stylesheet" type="text/css" href="public/css/gallery.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
     <script src="https://kit.fontawesome.com/5f58e28f90.js" crossorigin="anonymous"></script>
-    <title>Favourites</title>
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
+    <title>Gallery</title>
 </head>
 <body>
     <div class="container">
@@ -51,17 +52,19 @@
                 </div>
                 
                 <div class="section">
-                    <div class="idea" id="idea-1">
-                        <img src="public/uploads/<?= $idea->getImage() ?>">
-                        <div>
-                            <h3><?= $idea->getTitle() ?></h3>
-                            <p><?= $idea->getDescription() ?></p>
-                            <div class="social-section">
-                                <i class="fas fa-heart"></i>
-                                <i class="fa-solid fa-image"></i>
+                    <?php foreach($projects as $project): ?>
+                        <div class="idea" id="idea_id">
+                            <img src="public/uploads/<?= $project->getImage(); ?>">
+                            <div class="idea-text">
+                                <h3><?= $project->getTitle(); ?></h3>
+                                <p><?= $project->getDescription(); ?></p>
+                                <div class="social-section">
+                                    <i class="fas fa-heart"></i>
+                                    <i class="fa-solid fa-image"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
     		<img class="decoration-bottom" alt="" src="public/img/Vector 4.svg">

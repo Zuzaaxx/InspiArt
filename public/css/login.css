@@ -81,6 +81,11 @@ button {
     line-height: 2.5em;
 }
 
+
+button:hover {
+    background-color: #854E25;
+}
+
 .forgot {
     align-self: flex-end;
     display: flex;
@@ -159,4 +164,45 @@ button {
 .decoration-bottom{
     width: 100%;
     height: auto;
+}
+
+.no-valid {
+    border: 3px solid red;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
+}
+
+@media only screen and (max-device-width: 720px) {
+    .container {
+        background: transparent linear-gradient(180deg, #ffffff 50%, #F5DBAA 100%) 0% 0% no-repeat padding-box;
+        flex-direction: column; 
+        justify-content: flex-start;
+        
+        font-size: 10px;
+    }
+
+    .login-container {
+        visibility: hidden;
+        width: 100%;
+        height: 50vh;
+    }
+
+    .base-container {
+        width:100vw;
+        height: 50vh;
+    
+    }
+
+    .logo-picture {
+        width: 25em;
+        margin: 1em;
+        margin-top: 10em;
+        margin-bottom: 7em;
+    }
+
+    form{
+        width: 100vw;
+        height: 50vh;
+    }
 }

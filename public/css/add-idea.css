@@ -109,6 +109,10 @@ button {
     font-size: small;
 }
 
+button:hover {
+    background-color: #854E25;
+}
+
 .log-out {
     margin-top: auto;
 }

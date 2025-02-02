@@ -37,33 +37,31 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['wrong password']]);
         }
 
-//        return $this->render('start');
-
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/start");
     }
 
-public function register()
-{
-    if (!$this->isPost()) {
-        return $this->render('register');
+    public function register()
+    {
+        if (!$this->isPost()) {
+            return $this->render('register');
+        }
+
+        $name = $_POST['name'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $confirmedPassword = $_POST['confirmedPassword'];
+        $email = $_POST['email'];
+
+        if ($password !== $confirmedPassword) {
+            return $this->render('register', ['messages' => ['Please provide proper password']]);
+        }
+
+        //TODO try to use better hash function
+        $user = new User($username, md5($password), $name, $email);
+
+        $this->userRepository->addUser($user);
+
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
-
-    $name = $_POST['name'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirmedPassword = $_POST['confirmedPassword'];
-    $email = $_POST['email'];
-
-    if ($password !== $confirmedPassword) {
-        return $this->render('register', ['messages' => ['Please provide proper password']]);
-    }
-
-    //TODO try to use better hash function
-    $user = new User($username, md5($password), $name, $email);
-
-    $this->userRepository->addUser($user);
-
-    return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
-}
 }

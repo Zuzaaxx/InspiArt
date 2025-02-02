@@ -47,7 +47,7 @@
 
         <div class="section">
             <p class="upload-text">Now you can upload your image</p>
-            <form action="addIdea" method="POST" ENCTYPE="multipart/form-data">
+            <form action="addProject" method="POST" ENCTYPE="multipart/form-data">
                 <div class="message">
                     <?php if (isset($messages)) {
                         foreach ($messages as $message) {

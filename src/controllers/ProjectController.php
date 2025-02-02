@@ -35,7 +35,9 @@ class ProjectController extends AppController
             //$url = "http://$_SERVER[HTTP_HOST]";
             //header("Location: {$url}/gallery");
 
-            return $this->render('gallery', ['messages' => $this->messages]);
+            return $this->render('gallery', ['messages' => $this->messages,
+                'projects' => $this->projectRepository->getProjects()
+            ]);
         }
 
         return $this->render('add-idea', ['messages' => $this->messages]);
@@ -56,14 +58,9 @@ class ProjectController extends AppController
         return true;
     }
 
-
-
-
-
-
-
-
-
-
-
+    public function gallery()
+    {
+        $projects = $this->projectRepository->getProjects();
+        $this->render('gallery', ['projects' => $projects]);
+    }
 }

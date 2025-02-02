@@ -148,7 +148,7 @@ VALUES
 
 -- USERS_GALLERY
 INSERT INTO users_gallery (user_id, idea_id, title, description, path, date)
-VALUES (1, 6, 'sunny_unicorn', 'colored pencils', 'public/uploads/unicorn', '2025-01-31 19:21:00');
+VALUES (1, 6, 'sunny unicorn', 'colored pencils', 'public/uploads/unicorn', '2025-01-31 19:21:00');
 
 -- USERS_FAVOURITES
 INSERT INTO users_favourites (user_id, idea_id)

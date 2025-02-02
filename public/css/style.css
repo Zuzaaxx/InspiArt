@@ -46,6 +46,10 @@ button {
     line-height: 2.5em;
 }
 
+button:hover {
+    background-color: #854E25;
+}
+
 input {
     background-color: #77777750;
     border: none;

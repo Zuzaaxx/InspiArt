@@ -40,7 +40,7 @@
                 <img class="decoration-top" alt="" src="public/img/Vector 1.svg">
                 <div class="sign-up-section">
                     <div class="still-dont-have">Still don't have an account?</div>
-    		        <button class="sign-up">Sign up</button>
+                    <button class="sign-up" onclick="window.location.href='register'">Sign up</button>
                 </div>
             </div>
             

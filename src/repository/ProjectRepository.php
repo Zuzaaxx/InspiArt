@@ -32,19 +32,39 @@ class ProjectRepository extends Repository
     {
         $date = new DateTime();
         $stmt = $this->database->Connect()->prepare('
-            INSERT INTO users_gallery (title, description, path, date, user_id)
-            values (?, ?, ?, ?, ?)
+            INSERT INTO users_gallery (title, description, path, date, user_id, idea_id)
+            values (?, ?, ?, ?, ?, ?)
         ');
 
-        //TODO get user id
+        //TODO get user id, idea id
         $user_id = 1;
+        $idea_id = 1;
 
         $stmt->execute([
             $project->getTitle(),
             $project->getDescription(),
             $project->getImage(),
             $date->format('D-M-Y'),
-            $user_id
+            $user_id,
+            $idea_id
         ]);
+    }
+
+    public function getProjects(): array
+    {
+        $result = [];
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users_gallery;
+        ');
+        $stmt->execute();
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($projects as $project) {
+            $result[] = new Project(
+                $project['title'],
+                $project['description'],
+                $project['path']
+            );
+        }
+        return $result;
     }
 }

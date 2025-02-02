@@ -40,7 +40,7 @@
                     </li>
                 </ul>
             </div>
-            <button class="log-out">Log out</button>
+            <button class="log-out" onclick="window.location.href='login'">Log out</button>
         </nav>
         <div class="base-container">
             <img class="decoration-top" alt="" src="public/img/Vector 3.svg">

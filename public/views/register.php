@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/login.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
-
+    <script type="text/javascript" src="./public/js/register_validation.js" defer></script>
     <title>Login page</title>
 </head>
 <body>
