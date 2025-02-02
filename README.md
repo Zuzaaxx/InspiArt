@@ -47,6 +47,7 @@ gallery:
 ![gallery](https://github.com/user-attachments/assets/e81a5ae3-37aa-4599-95c0-bfc023d3cb1f)
 
 mobile version:
+
 ![profile](https://github.com/user-attachments/assets/a22a7e96-655b-4859-81e7-000d9dcd8da3)
 ![login_page](https://github.com/user-attachments/assets/d4a9e708-d3e0-4964-a8b7-43f6717eb30b)
 
